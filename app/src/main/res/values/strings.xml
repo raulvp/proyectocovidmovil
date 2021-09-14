@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">vaccovidincos</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">APP \VACUNACION COVID</string>
+    <string name="title_activity_login">Ingreso APP</string>
+    <string name="prompt_email">Correo</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="action_sign_in">Ingresar</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">El usuario no es valido</string>
+    <string name="invalid_password">Password debe tener >5 caracteres</string>
+    <string name="login_failed">"Login fallido"</string>
+</resources>
