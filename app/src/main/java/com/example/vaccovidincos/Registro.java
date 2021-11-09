@@ -9,9 +9,14 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
+import org.json.JSONObject;
+
 import java.util.Calendar;
 
-public class Registro extends AppCompatActivity {
+public class Registro extends AppCompatActivity implements Response.Listener<JSONObject>,Response.ErrorListener {
     EditText fechaNac,fechaVac;
     private  int dia,mes,anio;
 
@@ -65,25 +70,13 @@ public class Registro extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onErrorResponse(VolleyError error) {
 
-/*
+    }
 
     @Override
-    public void onClick(View view) {
-        final Calendar calendar = Calendar.getInstance();
-        dia = calendar.get(Calendar.DAY_OF_MONTH);
-        mes = calendar.get(Calendar.MONTH);
-        anio = calendar.get(Calendar.YEAR);
+    public void onResponse(JSONObject response) {
 
-
-        DatePickerDialog dp = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                fechaNac.setText(i2 + "/"+(i1+1)+"/"+i);
-            }
-        },dia,mes,anio);
-
-        dp.show();
-    }*/
-
+    }
 }
