@@ -29,7 +29,7 @@ public class Registro extends AppCompatActivity implements Response.Listener<JSO
 
     //campos formulario
 
-    EditText nombres,apellidos,carnet,fechanacimiento,municipio,estasalud,fechavacuna,dosis,proxvacuna;
+    EditText nombres,apellidos,carnet,municipio,estasalud,dosis,proxvacuna;
     Spinner servsaludlista,proveedor;
 
     Button registrar;
@@ -130,28 +130,5 @@ public class Registro extends AppCompatActivity implements Response.Listener<JSO
         nombres.setText("");
     }
 
-
-
-
-
-/*
-
-    @Override
-    public void onClick(View view) {
-        final Calendar calendar = Calendar.getInstance();
-        dia = calendar.get(Calendar.DAY_OF_MONTH);
-        mes = calendar.get(Calendar.MONTH);
-        anio = calendar.get(Calendar.YEAR);
-
-
-        DatePickerDialog dp = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                fechaNac.setText(i2 + "/"+(i1+1)+"/"+i);
-            }
-        },dia,mes,anio);
-
-        dp.show();
-    }*/
 
 }
