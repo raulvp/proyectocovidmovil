@@ -65,6 +65,10 @@ public class Registro extends AppCompatActivity {
     }
 
 
+    public void mimetodo(){
+
+    }
+
 
 /*
 
