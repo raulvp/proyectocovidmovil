@@ -5,21 +5,38 @@ import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import org.json.JSONObject;
 
 import java.util.Calendar;
+import java.util.LinkedList;
 
 public class Registro extends AppCompatActivity implements Response.Listener<JSONObject>,Response.ErrorListener {
     EditText fechaNac,fechaVac;
     private  int dia,mes,anio;
 
+    //campos formulario
+
+    EditText nombres,apellidos,carnet,municipio,estasalud,dosis,proxvacuna;
+    Spinner servsaludlista,proveedor;
+
+    Button registrar;
+
+    //adicionando elementos recepcion
+    RequestQueue requestQueue;
+    JsonObjectRequest jsonObjectRequest;
 
 
     @Override
@@ -29,6 +46,40 @@ public class Registro extends AppCompatActivity implements Response.Listener<JSO
 
         fechaNac = (EditText) findViewById(R.id.txtfechanac);
         fechaVac = (EditText) findViewById(R.id.txtfechavacuna);
+
+        //enlazando campos
+        nombres=(EditText) findViewById(R.id.txtnombre);
+        apellidos=(EditText) findViewById(R.id.txtape);
+        carnet=(EditText) findViewById(R.id.txtcarnet);
+        estasalud=(EditText) findViewById(R.id.txtestsalud);
+        municipio=(EditText) findViewById(R.id.txtmunicipio);
+        dosis=(EditText) findViewById(R.id.txtdosis);
+        proxvacuna=(EditText) findViewById(R.id.proxfechvac);
+
+        servsaludlista = (Spinner) findViewById(R.id.spinner2);
+
+        proveedor = (Spinner) findViewById(R.id.spinner3);
+
+        registrar = (Button) findViewById(R.id.btn_registrar);
+
+        requestQueue = Volley.newRequestQueue(getApplicationContext());
+        registrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cargarWsRegistro();
+            }
+        });
+
+    }
+
+    private void cargarWsRegistro() {
+
+        String url = "http://192.168.0.6:9095/proyectocovid/conexremotas/conexregistrar.php?nombres="+nombres.getText().toString()+"&apellidos="+apellidos.getText().toString()+"&carnet="+carnet.getText().toString()+"&estasalud="+estasalud.getText().toString()+"&municipio="+municipio.getText().toString()+"&dosis="+dosis.getText().toString()+"&proxvacuna="+proxvacuna.getText().toString()+"&servsaludlista="+ servsaludlista.getSelectedItem().toString()+"&proveedor="+proveedor.getSelectedItem().toString()+"&fechaNac="+fechaNac.getText().toString()+"&fechaVac="+fechaVac.getText().toString();
+        url= url.replace(" ","%20");
+
+        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
+
+        requestQueue.add(jsonObjectRequest);
 
 
     }
@@ -69,14 +120,30 @@ public class Registro extends AppCompatActivity implements Response.Listener<JSO
         dpv.show();
     }
 
-
     @Override
     public void onErrorResponse(VolleyError error) {
-
+        Toast.makeText(getApplicationContext(),"No se pudo registrar"+error.toString(),Toast.LENGTH_SHORT).show();
     }
 
-    @Override
     public void onResponse(JSONObject response) {
+        Toast.makeText(getApplicationContext(),"Registro exitosamente!",Toast.LENGTH_SHORT).show();
+        nombres.setText("");
+        apellidos.setText("");
+
+        fechaNac.setText("");
+        fechaVac.setText("");
+
+
+        carnet.setText("");
+        estasalud.setText("");
+        municipio.setText("");
+        dosis.setText("");
+        proxvacuna.setText("");
+
+
 
     }
+
+
+
 }
