@@ -63,18 +63,27 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:onClick="fechaNacimiento"
                 android:hint="Fecha Nac."
                 android:inputType="date" />
 
-            <EditText
-                android:id="@+id/editText5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="Serv. Salud"
-                android:inputType="textPersonName" />
+        </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/list_servsalud"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:entries="@array/servsalud"
+                android:popupElevation="25dp"
+                android:ems="12"
+                android:spinnerMode="dropdown" />
         </LinearLayout>
 
         <LinearLayout
@@ -85,6 +94,7 @@
 
             <EditText
                 android:id="@+id/txtmunicipio"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -110,6 +120,30 @@
             android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/txtfechavacuna"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="fechaVacuna"
+                android:ems="10"
+                android:hint="Fecha Vacuna"
+                android:inputType="date" />
+
+            <Spinner
+                android:id="@+id/spinner3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:entries="@array/proveedor" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="horizontal">
+
+            <EditText
                 android:id="@+id/txtdosis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -119,12 +153,12 @@
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/txtvacuna"
+                android:id="@+id/proxfechvac"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Tipo Vacuna"
+                android:hint="Prox. Vacuna"
                 android:inputType="textPersonName" />
 
         </LinearLayout>
