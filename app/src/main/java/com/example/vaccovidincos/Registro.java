@@ -34,6 +34,7 @@ public class Registro extends AppCompatActivity implements Response.Listener<JSO
 
     Button registrar;
 
+    //adicionando elementos recepcion
     RequestQueue requestQueue;
     JsonObjectRequest jsonObjectRequest;
 
@@ -128,6 +129,20 @@ public class Registro extends AppCompatActivity implements Response.Listener<JSO
     public void onResponse(JSONObject response) {
         Toast.makeText(getApplicationContext(),"Registro exitosamente!",Toast.LENGTH_SHORT).show();
         nombres.setText("");
+        apellidos.setText("");
+
+        fechaNac.setText("");
+        fechaVac.setText("");
+
+
+        carnet.setText("");
+        estasalud.setText("");
+        municipio.setText("");
+        dosis.setText("");
+        proxvacuna.setText("");
+
+
+
     }
 
 
