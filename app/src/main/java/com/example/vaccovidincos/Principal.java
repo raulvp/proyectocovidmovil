@@ -17,4 +17,9 @@ public class Principal extends AppCompatActivity {
         Intent it = new Intent(getApplicationContext(),Registro.class);
         startActivity(it);
     }
+
+    public void listar(View v){
+        Intent it1 = new Intent(getApplicationContext(),ListarRegistros.class);
+        startActivity(it1);
+    }
 }

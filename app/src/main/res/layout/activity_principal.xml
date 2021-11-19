@@ -53,9 +53,10 @@
                 android:layout_height="match_parent">
 
                 <ImageButton
-                    android:id="@+id/imgbtn3"
+                    android:id="@+id/imgbtnlistar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:onClick="listar"
                     app:srcCompat="@mipmap/ic_clipboard" />
 
                 <ImageButton
