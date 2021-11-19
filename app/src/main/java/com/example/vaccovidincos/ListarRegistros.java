@@ -1,8 +1,11 @@
 package com.example.vaccovidincos;
 
+import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -83,6 +86,29 @@ public class ListarRegistros extends AppCompatActivity {
 
             ArrayAdapter<Paciente> a = new ArrayAdapter(this,android.R.layout.simple_list_item_1,lista);
             listado.setAdapter(a);
+
+            /**mostrar informacion***/
+
+            listado.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Paciente p = lista.get(i);
+                    StringBuffer b = new StringBuffer();
+                    b.append("ID: " + p.getIdPaciente() + "\n");
+                    b.append("NOMBRES: " + p.getNombre() + "\n");
+                    b.append("APELLIDOS: $" + p.getApellidos() + "\n");
+                    b.append("CARNET: " + p.getCedula() + "\n");
+                    b.append("VACUNA: " + p.getProveedor());
+
+                    AlertDialog.Builder a = new AlertDialog.Builder(ListarRegistros.this);
+                    a.setCancelable(true);
+                    a.setTitle("Detalle");
+                    a.setMessage(b.toString());
+                    //a.setIcon(R.drawable.ok);
+                    a.show();
+                }
+            });
+
         }catch(Exception e){
             e.printStackTrace();
         }
